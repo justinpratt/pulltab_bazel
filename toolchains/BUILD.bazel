@@ -1,0 +1,129 @@
+package(default_visibility = ["//visibility:public"])
+
+load("@bazel_tools//tools/cpp:unix_cc_toolchain_config.bzl", "cc_toolchain_config")
+
+filegroup(
+  name = 'empty',
+)
+
+cc_toolchain(
+  name = "cc_toolchain_macos_arm64_gcc13",
+  all_files = ":empty",
+  ar_files = ":empty",
+  as_files = ":empty",
+  compiler_files = ":empty",
+  dwp_files = ":empty",
+  linker_files = ":empty",
+  objcopy_files = ":empty",
+  strip_files = ":empty",
+  static_runtime_lib = ":empty",
+  toolchain_config = ":cc_toolchain_config_macos_arm64_gcc13",
+)
+
+cc_toolchain_config(
+  name = "cc_toolchain_config_macos_arm64_gcc13",
+  cpu = "arm64",
+  compiler = "gcc",
+  toolchain_identifier = "cc_toolchain_macos_arm64_gcc13",
+  host_system_name = "local",
+  target_system_name = "local",
+  target_libc = "unknown",
+  abi_version = "unknown",
+  abi_libc_version = "unknown",
+  cxx_builtin_include_directories = [
+    "/opt/homebrew/Cellar/gcc/13.1.0/include/c++/13",
+    "/opt/homebrew/Cellar/gcc/13.1.0/lib/gcc/current/gcc/aarch64-apple-darwin22/13",
+    "/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk",
+  ],
+  tool_paths = {
+    "gcc": "/opt/homebrew/Cellar/gcc/13.1.0/bin/g++-13",
+    "cpp": "/opt/homebrew/Cellar/gcc/13.1.0/bin/cpp-13",
+    "ar": "/opt/homebrew/Cellar/binutils/2.41/bin/ar",
+    "nm": "/opt/homebrew/Cellar/binutils/2.41/bin/nm",
+    "ld": "/usr/bin/ld",
+    "as": "/usr/bin/as",
+    "objcopy": "/opt/homebrew/Cellar/binutils/2.41/bin/objcopy",
+    "objdump": "/opt/homebrew/Cellar/binutils/2.41/bin/objdump",
+    "gcov": "/opt/homebrew/Cellar/gcc/13.1.0/bin/gcov-13",
+    "strip": "/opt/homebrew/Cellar/binutils/2.41/bin/strip",
+    "llvm-cov": "/bin/false",
+  },
+  compile_flags = [
+  ],
+  link_flags = [],
+)
+
+toolchain(
+  name = "toolchain_macos_arm64_gcc13",
+  exec_compatible_with = [
+    "@@platforms//os:macos",
+    "@@platforms//cpu:arm64",
+  ],
+  target_compatible_with = [
+    "@@platforms//os:macos",
+    "@@platforms//cpu:arm64",
+  ],
+  toolchain_type = "@@rules_cc//cc:toolchain_type",
+  toolchain = ":cc_toolchain_macos_arm64_gcc13",
+)
+
+cc_toolchain(
+  name = "cc_toolchain_macos_arm64_clang16",
+  all_files = ":empty",
+  ar_files = ":empty",
+  as_files = ":empty",
+  compiler_files = ":empty",
+  dwp_files = ":empty",
+  linker_files = ":empty",
+  objcopy_files = ":empty",
+  strip_files = ":empty",
+  static_runtime_lib = ":empty",
+  toolchain_config = ":cc_toolchain_config_macos_arm64_clang16",
+)
+
+cc_toolchain_config(
+  name = "cc_toolchain_config_macos_arm64_clang16",
+  cpu = "arm64",
+  compiler = "clang",
+  toolchain_identifier = "cc_toolchain_macos_arm64_clang16",
+  host_system_name = "local",
+  target_system_name = "local",
+  target_libc = "unknown",
+  abi_version = "unknown",
+  abi_libc_version = "unknown",
+  cxx_builtin_include_directories = [
+    "/opt/homebrew/Cellar/llvm/16.0.6/lib/clang/16/include",
+    "/opt/homebrew/Cellar/llvm/16.0.6/include/c++/v1",
+    "/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk",
+  ],
+  tool_paths = {
+    "gcc": "/opt/homebrew/Cellar/llvm/16.0.6/bin/clang++",
+    "cpp": "/opt/homebrew/Cellar/llvm/16.0.6/bin/clang-cpp",
+    "ar": "/opt/homebrew/Cellar/llvm/16.0.6/bin/llvm-ar",
+    "nm": "/opt/homebrew/Cellar/llvm/16.0.6/bin/llvm-nm",
+    "ld": "/opt/homebrew/Cellar/llvm/16.0.6/bin/lld",
+    "as": "/opt/homebrew/Cellar/llvm/16.0.6/bin/llvm-as",
+    "objcopy": "/opt/homebrew/Cellar/llvm/16.0.6/bin/llvm-objcopy",
+    "objdump": "/opt/homebrew/Cellar/llvm/16.0.6/bin/llvm-objdump",
+    "gcov": "/bin/false",
+    "strip": "/opt/homebrew/Cellar/llvm/16.0.6/bin/llvm-strip",
+    "llvm-cov": "/opt/homebrew/Cellar/llvm/16.0.6/bin/llvm-cov",
+  },
+  compile_flags = [
+  ],
+  link_flags = [],
+)
+
+toolchain(
+  name = "toolchain_macos_arm64_clang16",
+  exec_compatible_with = [
+    "@@platforms//os:macos",
+    "@@platforms//cpu:arm64",
+  ],
+  target_compatible_with = [
+    "@@platforms//os:macos",
+    "@@platforms//cpu:arm64",
+  ],
+  toolchain_type = "@@rules_cc//cc:toolchain_type",
+  toolchain = ":cc_toolchain_macos_arm64_clang16",
+)
